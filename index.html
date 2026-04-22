@@ -1369,5 +1369,27 @@
     setTimeout(() => this.classList.remove('sent'), 3500);
   });
 </script>
+
+<script>
+const container = document.getElementById('workGrid');
+
+if (container) {
+  fetch('/content/projects.json')
+    .then(res => res.json())
+    .then(data => {
+      data.forEach(project => {
+        const el = document.createElement('div');
+        el.innerHTML = `
+          <div class="work-card">
+            <div class="card-title">${project.title}</div>
+            <div class="card-desc">${project.description}</div>
+          </div>
+        `;
+        container.appendChild(el);
+      });
+    });
+}
+</script>
+
 </body>
 </html>
